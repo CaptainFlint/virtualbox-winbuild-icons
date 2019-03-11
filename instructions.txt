@@ -1,0 +1,47 @@
+Hacky procedures for redrawing and/or adapting the icon images
+
+=========================
+Paint.NET instruction for converting into disabled version:
+1. Flatten image if necessary.
+2. Convert to greyscale.
+3. Set layer opacity to 128, save+reload image to actually apply the change to the image itself (is there more direct way?).
+Then correct the brightness. For log_viewer_options_*:
+4. Select most of the bottom half of the picture, except for the top left half of the cog; apply brigntess -18, contrast +9.
+5. Select the internal part of the bottom right half of the cog, minus some slice from the center; apply brigntess -18, contrast +9.
+For other images:
+4. Apply brigntess -9, contrast +9.
+
+========================
+GIMP:
+Blue sf_*.png => orange file_manager_folder_*.png
+
+Apply Color -> Components -> Channel Mixer with:
+Red:
+  r -0.036
+  g -0.036
+  b  0,886
+Green:
+  r  0,407
+  g  1,030
+  b  0,000
+Blue:
+  r  0,982
+  g -0,012
+  b -0,024
+[X] Preserve luminosity
+
+For 16px also apply Color -> Saturation with value 1,200.
+
+========================
+Colours for sheet of paper:
+Background bottom: fffcf9
+Background: gradient bottom-right fffcf9 -> top left c9c4c0
+Then select empty canvas around background, feather selection by 2-4 px (depending on the picture size), erase 4 times.
+Border: gradient bottom 504b46 -> top 645f5a
+Items: 5a5550
+
+Red log sheet of paper:
+Background bottom: ff9d85 
+Background: gradient bottom-right ff886c -> top left ec4313
+Border: gradient bottom a93a02 -> top bf470c
+Items: fff1e3
